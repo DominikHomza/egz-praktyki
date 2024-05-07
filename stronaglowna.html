@@ -1,0 +1,108 @@
+<?php
+session_start();
+
+// Połączenie z bazą danych (przykład dla MySQL)
+$servername = "localhost";
+$username = "username"; // Twoja nazwa użytkownika
+$password = "password"; // Twoje hasło
+$dbname = "mydatabase"; // Nazwa twojej bazy danych
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Sprawdzenie połączenia
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Logika logowania użytkownika
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Pobierz dane z formularza
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Weryfikacja użytkownika w bazie danych
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        // Jeśli logowanie jest poprawne, zapisz nazwę użytkownika w sesji
+        $_SESSION["username"] = $username;
+
+        // Przekieruj użytkownika do strony profilu
+        header("Location: user_profile.php");
+        exit();
+    } else {
+        // Komunikat o błędzie logowania
+        $error_message = "Nieprawidłowa nazwa użytkownika lub hasło.";
+    }
+}
+
+// Logika rejestracji użytkownika
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
+    // Pobierz dane z formularza
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Dodaj użytkownika do bazy danych
+    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+
+    if ($conn->query($sql) === TRUE) {
+        // Jeśli rejestracja jest pomyślna, zaloguj użytkownika
+        $_SESSION["username"] = $username;
+
+        // Przekieruj użytkownika do strony profilu
+        header("Location: user_profile.php");
+        exit();
+    } else {
+        // Komunikat o błędzie rejestracji
+        $error_message = "Wystąpił problem podczas rejestracji użytkownika.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Egzaminacyjna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Strona Egzaminacyjna</h1>
+    </header>
+    <main>
+        <section class="login-form">
+            <h2>Logowanie</h2>
+            <form action="index.php" method="post">
+                <label for="username">Nazwa użytkownika:</label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password" required><br>
+                <input type="submit" value="Zaloguj się">
+            </form>
+            <?php if(isset($error_message)) echo "<p class='error'>$error_message</p>"; ?>
+        </section>
+        
+        <section class="register-form">
+            <h2>Rejestracja</h2>
+            <form action="index.php" method="post">
+                <label for="reg_username">Nazwa użytkownika:</label>
+                <input type="text" id="reg_username" name="username" required><br>
+                <label for="reg_password">Hasło:</label>
+                <input type="password" id="reg_password" name="password" required><br>
+                <input type="submit" name="register" value="Zarejestruj się">
+            </form>
+        </section>
+        
+        <section class="tiles">
+            <a href="inf03.html" class="tile">Inf03</a>
+            <a href="inf04.html" class="tile">Inf04</a>
+        </section>
+    </main>
+    <footer>
+        &copy; 2024 Strona Egzaminacyjna
+    </footer>
+</body>
+</html>
