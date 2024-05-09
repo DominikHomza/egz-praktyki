@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -23,8 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         $error_message = "Hasło musi zawierać co najmniej jedną małą literę, jedną dużą literę, jedną cyfrę, jeden znak specjalny i mieć co najmniej 8 znaków.";
     } else {
         // Dodanie użytkownika do bazy danych
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
+        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
         if ($conn->query($sql) === TRUE) {
             $_SESSION["username"] = $username;
             header("Location: user_profile.php");
@@ -40,18 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM users WHERE username='$username'";
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row["password"])) {
-            $_SESSION["username"] = $username;
-            header("Location: user_profile.php");
-            exit();
-        } else {
-            $error_message = "Nieprawidłowa nazwa użytkownika lub hasło.";
-        }
+        $_SESSION["username"] = $username;
+        header("Location: user_profile.php");
+        exit();
     } else {
         $error_message = "Nieprawidłowa nazwa użytkownika lub hasło.";
     }
@@ -92,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                 <input type="password" id="reg_password" name="password" required><br>
                 <input type="submit" name="register" value="Zarejestruj się">
             </form>
+            <?php if(isset($error_message)) echo "<p class='error'>$error_message</p>"; ?>
         </section>
         
         <section class="tiles">
