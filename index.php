@@ -3,25 +3,24 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "uzytkowicy";
+$db = "uzytkowicy";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $db);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Logika rejestracji użytkownika
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    // Sprawdzenie, czy hasło spełnia politykę haseł
+   
     $password_policy = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
     if (!preg_match($password_policy, $password)) {
         $error_message = "Hasło musi zawierać co najmniej jedną małą literę, jedną dużą literę, jedną cyfrę, jeden znak specjalny i mieć co najmniej 8 znaków.";
     } else {
-        // Dodanie użytkownika do bazy danych
+        
         $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
         if ($conn->query($sql) === TRUE) {
             $_SESSION["username"] = $username;
@@ -33,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     }
 }
 
-// Logika logowania użytkownika
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -55,9 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona Egzaminacyjna</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
     <header>
@@ -89,8 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
         </section>
         
         <section class="tiles">
-            <a href="inf03.html" class="tile">Inf03</a>
-            <a href="inf04.html" class="tile">Inf04</a>
+            <a href="inf03.php" class="tile">Inf03</a>
+            <a href="inf04.php" class="tile">Inf04</a>
         </section>
     </main>
     <footer>
