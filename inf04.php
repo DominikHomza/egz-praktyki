@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>INF.04.</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="styleinf.css">
 </head>
 <body>
     <header>
         <h1>Egzamin INF.04.</h1>
     </header>
     <main>
+        <br>
+        <section class="tiles">
+            <a href="inf03.php" class="tile">Egzamin Inf03</a>
+            <a href="user_profile.php" class="tile">Profil użytkownika</a>
+            <a href="FAQ.php" class="tile">FAQ</a>
+        </section>
         <section class="content">
             <p>
                 INF.04. Projektowanie, Programowanie I Testowanie Aplikacji<br><br>
@@ -51,9 +57,16 @@
         </section>
     </main>
     <section class="content">
+            <label for="userName">Nazwa użytkownika:</label>
+            <input type="text" id="userName" name="userName">
             <button id="generujQuizButton">Generuj Quiz</button> 
             <div id="kontenerQuizu"></div> 
             <button id="obliczWynikButton" style="display: none;">Oblicz Wynik</button> 
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="zapiszWynikForm" style="display: none;">
+                <input type="hidden" id="userNameInput" name="userName">
+                <input type="hidden" id="wynikInput" name="wynik">
+                <input type="submit" name="zapiszWynik" value="Zapisz Wynik">
+            </form>
         </section>
     </main>
     <footer>
@@ -191,18 +204,390 @@
             D: "lojalność, nieśmiałość, uczciwość"
         },
         poprawnaOdpowiedz: "A"
-    }
+    },
+    {
+    pytanie: "Zastosowanie typu DECIMAL języka SQL wymaga wcześniejszego zdefiniowania długości (liczby cyfr) przed przecinkiem oraz długości cyfr po przecinku. Jest to zapis:",
+    opcje: {
+        A: "logiczny",
+        B: "łańcuchowy",
+        C: "stałoprzecinkowy",
+        D: "zmiennoprzecinkowy"
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Dane z serwera do aplikacji front-end można przesłać za pomocą:",
+    opcje: {
+        A: "metody POST",
+        B: "protokołu SSH",
+        C: "formatu JSON",
+        D: "biblioteki jQuery"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Programista może zastosować framework Angular w celu implementacji aplikacji:",
+    opcje: {
+        A: "mobilnej",
+        B: "desktopowej",
+        C: "typu front-end",
+        D: "typu back-end"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Poszkodowanego należy ułożyć w pozycji bocznej bezpiecznej w przypadku:",
+    opcje: {
+        A: "omdlenia, gdy osoba oddycha",
+        B: "omdlenia i braku tętna",
+        C: "urazu pleców, gdy osoba jest przytomna",
+        D: "uszkodzenia kręgosłupa"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Jednym z etapów publikacji mobilnej w sklepie Google Play są testy Beta, których cechą charakterystyczną jest to, że są one:",
+    opcje: {
+        A: "podzielone na testy funkcjonalne, wydajnościowe i skalowalności",
+        B: "przeprowadzane w oparciu o dokument z przypadkami testowymi",
+        C: "wykonane przez grupę docelowych użytkowników aplikacji",
+        D: "wykonywane przez grupę zatrudnionych testerów z firmy Google"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Kolor Pale Green w systemie RGB ma postać RGB(152, 251, 152). Kod szesnastkowy tego koloru wynosi:",
+    opcje: {
+        A: "98 FE 98",
+        B: "98 FB 98",
+        C: "A0 FB A0",
+        D: "A0 FE A0"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Modyfikator dostępu poprzedzający definicję metody Dodaj() zdefiniowanej w klasie Kalkulator powoduje, że:",
+    opcje: {
+        A: "jest ona dostępna w programie głównym i może być wywołana na rzecz instancji klasy Kalkulator",
+        B: "nie jest ona dostępna z poziomu klas, które są zaprzyjaźnione z klasą Kalkulator",
+        C: "nie jest ona dostępna w klasach dziedziczących po klasie Kalkulator",
+        D: "jest ona dostępna wewnątrz klasy oraz wewnątrz klas dziedziczących po klasie Kalkulator"
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Środowiskiem natywnym do programowania aplikacji desktopowych za pomocą języka C# jest:",
+    opcje: {
+        A: "MS Visual Studio",
+        B: "NetBeans",
+        C: "Eclipse",
+        D: "PyCharm"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "W którym modelu Cyklu Życia Projektu Informatycznego występuje etap analizy ryzyka?",
+    opcje: {
+        A: "W spiralnym.",
+        B: "W kaskadowym.",
+        C: "W modelu Fry’ego",
+        D: "W modelu z prototypem."
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Który z wymienionych algorytmów działających na tablicy jednowymiarowej ma złożoność obliczeniową O(n2)?",
+    opcje: {
+        A: "Wyszukiwanie binarne.",
+        B: "Wypisanie elementów.",
+        C: "Sortowanie bąbelkowe.",
+        D: "Sortowanie szybkie."
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Stosowanie wzorca Obserwator w programowaniu aplikacji WEB ma na celu:",
+    opcje: {
+        A: "obsługę funkcji synchronicznych w kodzie aplikacji",
+        B: "powiadamianie obiektów o zmianie stanu innych obiektów",
+        C: "obserwowanie interakcji użytkownika i wysyłanie wyjątków",
+        D: "dopasowanie interfejsu użytkownika do różnych typów użytkowników"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Pierwotnym przeznaczeniem środowisk IDE o nazwach: IntelliJ IDEA, Eclipse, NetBeans jest programowania w języku:",
+    opcje: {
+        A: "C#",
+        B: "C++",
+        C: "Python",
+        D: "Java"
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Obsługę wyjątku, który wygenerowała aplikacja należy zdefiniować w sekcji",
+    opcje: {
+        A: "catch",
+        B: "try",
+        C: "throw",
+        D: "finally"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Która metodyka zarządzania projektem jest optymalna, gdy zakres projektu w początkowej fazie nie jest do końca znany, wymagania mogą ulec zmianie w trakcie trwania projektu oraz mogą pojawić się nowe wymagania?",
+    opcje: {
+        A: "Model kaskadowy",
+        B: "Model V",
+        C: "Agile",
+        D: "PRINCE2"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Aplikacja mobilna wyświetla listę, której każdy z elementów może być dotknięty palcem, aby wyświetlić jego szczegóły. Zdarzenie odpowiadające tej akcji to",
+    opcje: {
+        A: "value changed.",
+        B: "button clicked.",
+        C: "tapped.",
+        D: "toggled."
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Założenie programowania obiektowego polegające na ukrywaniu składowych klasy tak, aby były one dostępne tylko metodom tej klasy lub funkcjom zaprzyjaźnionym, to",
+    opcje: {
+        A: "dziedziczenie.",
+        B: "wyjątki.",
+        C: "polimorfizm.",
+        D: "hermetyzacja."
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Które zdarzenie jest wygenerowane, gdy nieaktywne okno lub kontrolka zostaje kliknięta myszą?",
+    opcje: {
+        A: "blur.",
+        B: "keyup.",
+        C: "validating.",
+        D: "focus."
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Strategia budowania algorytmu poprzez podział na dwa lub więcej mniejszych podproblemów tak długo, aż fragmentu staną się proste do bezpośredniego rozwiązania jest metodą:",
+    opcje: {
+        A: "heurystyczną",
+        B: "komiwojażera",
+        C: "dziel i zwyciężaj",
+        D: "najkrótszej ścieżki"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Zadaniem interpretera jest:",
+    opcje: {
+        A: "analizowanie składni całego programu przed jego uruchomieniem",
+        B: "wykonanie skryptu instrukcja po instrukcji",
+        C: "optymalizowanie większej części kodu, w celu szybszego wykonania",
+        D: "przetłumaczenie kodu na kod maszynowy"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Reguła zaangażowania i konsekwencji jako jedna z reguł wywierania wpływu wiąże się",
+    opcje: {
+        A: "z odwdzięczeniem się osobie, która wyświadczyła nam przysługę",
+        B: "z sugerowaniem się opinią danej społeczności",
+        C: "z doprowadzeniem spraw do końca",
+        D: "z posłuszeństwem wobec autorytetów"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "W językach C++ lub C# słowo kluczowe virtual można stosować do",
+    opcje: {
+        A: "pól klasy",
+        B: "konstruktorów",
+        C: "metod klasy",
+        D: "funkcji zaprzyjaźnionych"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Narzędziem dedykowanym do implementacji aplikacji w środowisku WPF (ang. Windows Presentation Foundation) jest",
+    opcje: {
+        A: "Visual Studio",
+        B: "NetBeans",
+        C: "PyCharm",
+        D: "XamarinStudio"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Zastosowanie modyfikatora abstract w definicji metody klasy oznacza, że",
+    opcje: {
+        A: "w klasie tej należy zaimplementować tę metodę",
+        B: "nie można dziedziczyć po tej klasie",
+        C: "w klasach dziedziczących nie wolno implementować tej metody",
+        D: "klasa ta jest bazowa dla innych klas"
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Wskaż rodzaj testów, które przeprowadza się podczas fazy tworzenia kodu źródłowego",
+    opcje: {
+        A: "testy wydajnościowe",
+        B: "testy kompatybilności",
+        C: "testy wdrożeniowe",
+        D: "testy jednostkowe"
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Jedną z wytycznych standardu WCAG 2.0 jest",
+    opcje: {
+        A: "unikanie zapisu informacji w formie uproszczonej",
+        B: "zmniejszanie zawartości strony poprzez zaniechanie stosowania alternatyw tekstowych dla obrazów i video",
+        C: "stosowanie kilku schematów kolorystycznych, w tym bardzo kontrastowego",
+        D: "stosowanie jednego, odpowiednio dużego rozmiaru czcionki"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Wskaż niestabilny algorytm sortowania",
+    opcje: {
+        A: "sortowanie bąbelkowe",
+        B: "sortowanie przez wstawianie",
+        C: "sortowanie szybkie",
+        D: "sortowanie przez zliczanie"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Aby w aplikacji Web zaimplementować mechanizm gromadzenia na komputerach użytkowników danych statystycznych, można zastosować",
+    opcje: {
+        A: "buforowanie",
+        B: "ciasteczka",
+        C: "sesje",
+        D: "formularze"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Frameworkiem umożliwiającym programowanie aplikacji desktopowych jest",
+    opcje: {
+        A: "WPF",
+        B: "Symfony",
+        C: "Xamarin",
+        D: "Angular"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Wskaż rodzaj kolekcji, do którego należy skorzystać, aby przechowywać dane związane z elementem interfejsu użytkownika tak, aby element był ten informowany przez kolekcję o dodaniu, usunięciu lub zmianie jej elementu",
+    opcje: {
+        A: "ObservableCollection",
+        B: "KeyedCollection",
+        C: "Collection",
+        D: "ReadOnlyCollection"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Pierwszym etapem tworzenia aplikacji jest",
+    opcje: {
+        A: "utworzenie przypadków testowych",
+        B: "projekt architektury systemu",
+        C: "dobór zestawu typów i zmiennych dla aplikacji",
+        D: "analiza wymagań klienta"
+    },
+    poprawnaOdpowiedz: "D"
+},
+{
+    pytanie: "Dziedziczenie jest stosowane, gdy istnieje potrzeba",
+    opcje: {
+        A: "asynchronicznej obsługi długotrwałych operacji",
+        B: "definicji klasy bardziej specjalistycznej niż już zdefiniowana",
+        C: "stosowania wartości stałych, niezmiennych przez czas trwania aplikacji",
+        D: "zdefiniowania zakresu widzialności metod i pól jednej klasy"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Wskaż frazę, która w języku angielskim oznacza 'testy wydajnościowe'",
+    opcje: {
+        A: "unit testing",
+        B: "performance testing",
+        C: "integration testing",
+        D: "security testing"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Teoria ustalania celów opisuje właściwie określony cel jako SMART, od pierwszych liter słów: specyficzny, Mierzalny, Ambitny, Realny i Terminowy. Wskaż cel, którego osiągnięcie wymaga wysiłku i stanowi wyzwanie dla pracownika",
+    opcje: {
+        A: "Mierzalny",
+        B: "Ambitny",
+        C: "Terminowy",
+        D: "Specyficzny"
+    },
+    poprawnaOdpowiedz: "B"
+},
+{
+    pytanie: "Wskaż przykład wypadku przy pracy",
+    opcje: {
+        A: "oparzenie ręki, które nastąpiło w czasie nieobowiązkowego doszkalania w czasie wolnym pracownika",
+        B: "złe samopoczucie wywołane przewlekła chorobą pracownika, które nastąpiło w miejscu pracy",
+        C: "uraz stawu skokowego, który nastąpił podczas bezpośredniej drogi do pracy",
+        D: "złamanie nogi podczas urlopu wypoczynkowego udzielonego przez pracodawcę"
+    },
+    poprawnaOdpowiedz: "C"
+},
+{
+    pytanie: "Przedstawiony zbiór operatorów należy do grupy operatorów: ++ -- * % /",
+    opcje: {
+        A: "arytmetycznych",
+        B: "przypisania",
+        C: "logicznych",
+        D: "porównania"
+    },
+    poprawnaOdpowiedz: "A"
+},
+{
+    pytanie: "Liczba A4 zapisana systemem heksadecymalnym ma postać binarną",
+    opcje: {
+        A: "1010100",
+        B: "10100100",
+        C: "10100010",
+        D: "1011100"
+    },
+    poprawnaOdpowiedz: "B"
+}
 ];
 document.getElementById("generujQuizButton").addEventListener("click", function() {
-    var quiz = generujQuiz(pytania);
+    var userName = document.getElementById("userName").value;
+    if (!userName) {
+        alert("Proszę podać nazwę użytkownika!");
+        return;
+    }
+    pytania.sort(() => Math.random() - 0.5);
+    var quiz = generujQuiz(pytania.slice(0, 40));
     document.getElementById("kontenerQuizu").innerHTML = quiz;
     document.getElementById("obliczWynikButton").style.display = "block";
 });
 
+
 document.getElementById("obliczWynikButton").addEventListener("click", function() {
-    var wynik = obliczWynik(pytania);
-    alert("Twój wynik: " + wynik + "/" + pytania.length);
-});
+        var pytaniaDoSprawdzenia = pytania.slice(0, 40);
+        var wynik = obliczWynik(pytaniaDoSprawdzenia);
+        alert("Twój wynik: " + wynik + "/" + pytaniaDoSprawdzenia.length);
+        document.getElementById("wynikInput").value = wynik;
+        document.getElementById("userNameInput").value = document.getElementById("userName").value;
+        zapiszWynikDoBazyDanych();
+    });
+
 
 function generujQuiz(pytaniaArray) {
     var quiz = "";
@@ -230,7 +615,51 @@ function obliczWynik(pytaniaArray) {
     }
     return wynik;
 }
+    
+function zapiszWynikDoBazyDanych() {
+    var x = new XMLHttpRequest();
+    x.open("POST", "<?php echo $_SERVER['PHP_SELF']; ?>", true);
+    x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    var userName = document.getElementById("userName").value;
+    var wynik = document.getElementById("wynikInput").value;
+    var params = "userName=" + encodeURIComponent(userName) + "&wynik=" + encodeURIComponent(wynik) + "&zapiszWynik=1";
+    x.send(params);
+}
 
-</script>
+
+    </script>
 </body>
-</html>
+</html> 
+   
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "uzytkowicy"; 
+
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["zapiszWynik"])) {
+        $userName = $_POST["userName"];
+        $score = $_POST["wynik"];
+        $examName = "INF.04.";
+
+        $sql = "INSERT INTO wyniki (userName, score, exam_name) VALUES ('$userName', '$score', '$examName')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Wynik został zapisany poprawnie.";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+}
+
+$conn->close();
+?>
