@@ -26,8 +26,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if (isset($_POST["logout"])) {
-    session_destroy(); // Zniszczenie sesji
-    header("Location: login.php"); // Przekierowanie do strony logowania
+    session_destroy(); 
+    header("Location: login.php");
     exit();
 }
 ?>
